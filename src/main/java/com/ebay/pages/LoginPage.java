@@ -44,13 +44,10 @@ public class LoginPage {
 		return driver.findElement(pageTitle).getText();
 	}
 
-	public void ebaySignIn(String email, String password) throws InterruptedException {
+	public void ebaySignIn(String email, String password) {
 		
-		Thread.sleep(5000);
 		this.setUserEmail(email);
 		this.clickContinue();
-		
-		Thread.sleep(5000);
 		this.setPassword(password);
 		this.clickSignIn();
 	}

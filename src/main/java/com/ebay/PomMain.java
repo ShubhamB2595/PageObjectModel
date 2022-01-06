@@ -1,5 +1,7 @@
 package com.ebay;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,6 +18,7 @@ public class PomMain {
 		System.setProperty("webdriver.chrome.driver",
 				"I:\\Selenium\\Page Object Model\\src\\main\\resources\\Driver\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		loginPage = new LoginPage(driver);
 		
 		driver.get("https://www.ebay.com/");

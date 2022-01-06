@@ -9,12 +9,12 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.ebay.pages.LoginPage;
+import com.ebay.pages.LoginPagePF;
 
-public class TestCases {
+public class TestCasesPF {
 
 	WebDriver driver;
-	LoginPage loginPage;
+	LoginPagePF loginPage;
 
 	@BeforeTest
 	public void setup() {
@@ -23,7 +23,7 @@ public class TestCases {
 				"I:\\Selenium\\Page Object Model\\src\\main\\resources\\Driver\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		loginPage = new LoginPage(driver);
+		loginPage = new LoginPagePF(driver);
 	}
 
 	@Test
