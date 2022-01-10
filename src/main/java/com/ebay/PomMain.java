@@ -6,27 +6,37 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.ebay.pages.Homepage;
 import com.ebay.pages.LoginPage;
 
 public class PomMain {
 
+	static WebDriver driver;
 	static LoginPage loginPage;
-	
-	
-	public static void main(String[] args) throws InterruptedException {
+	static Homepage homePage;
 
-		System.setProperty("webdriver.chrome.driver",
-				"I:\\Selenium\\Page Object Model\\src\\main\\resources\\Driver\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		loginPage = new LoginPage(driver);
+	public static void main(String[] args) throws Exception {
+
+		setWebDriverInit();
 		
-		driver.get("https://www.ebay.com/");
+		loginPage = new LoginPage(driver);
+		homePage = new Homepage(driver);
+	
+		homePage.launchHomepage();
+		homePage.searchProduct("laptop");
+		
+//		driver.get("https://www.ebay.com/");
+		driver.close();
 
-		driver.findElement(By.linkText("Sign in")).click();
-//		driver.findElement(By.xpath("//input[@id='userid']")).sendKeys("shubhu8698348143@gmail.com");
-//		driver.findElement(By.xpath("//button[@id='signin-continue-btn']")).click();
-		loginPage.ebaySignIn("shubhu8698348143@gmail.com", "12345678");
+//		loginPage.ebaySignIn("shubhu8698348143@gmail.com", "Shubham@2595");
 	}
 
+	public static void setWebDriverInit() {
+
+		System.setProperty(BaseClass.DRIVER_NAME, BaseClass.DRIVER_LOCATION);
+		driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+
+	}
 }

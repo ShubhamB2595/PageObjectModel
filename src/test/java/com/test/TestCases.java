@@ -1,9 +1,12 @@
 package com.test;
 
+import static org.testng.Assert.assertEquals;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -32,8 +35,13 @@ public class TestCases {
 		driver.get("https://www.ebay.com/");
 		driver.findElement(By.linkText("Sign in")).click();	
 
-		loginPage.ebaySignIn("shubhu8698348143@gmail.com", "12345678");
-	}
+		loginPage.ebaySignIn("shubhu8698348143@gmail.com", "Shubham@2595");
+//		WebElement msg = driver.findElement(By.id("welcome-msg"));
+		WebElement profileName = driver.findElement(By.xpath("//b[contains(text(),'Shubham')]"));	
+	
+		}
+			
+		
 
 	@AfterTest
 	public void closeBrowser() {
